@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import *
 from .form import *
@@ -9,9 +7,9 @@ from .form import *
 
 
 def index(request):
-    forums = forums.objects.all()
+    forums = Forums.objects.all()
     count = forums.count()
-    discussions = []
+    discussions= []
     for i in forums:
         discussions.append(i.discussion_set.all())
 
@@ -29,3 +27,15 @@ def index(request):
                 return redirect('/')
         context = {'form': form}
         return render(request, 'forumAdd.html', context)
+
+
+    def discussionAdd(request):
+        form = discussForm()
+        if request.method == 'POST':
+            form = discussForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/')
+        context = {'form':form}
+        return render(request, 'discussionAdd.html', context)
+

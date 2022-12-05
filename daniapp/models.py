@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here. - Forum Idea
 
-class forums(models.Model):
+class Forums(models.Model):
     name = models.CharField(max_length=200, default="anon")
     topic = models.CharField(max_length=200, null=True)  # Had to add
     description = models.CharField(max_length=1000, black=True)
