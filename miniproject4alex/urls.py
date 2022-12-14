@@ -19,9 +19,7 @@ from daniapp.views import *
 
 
 urlpatterns = [
-    # path('daniapp/', include('daniapp.urls')),
+    path('daniapp/', include('daniapp.urls')),
     path('admin/', admin.site.urls),
-    path('', index, name='home'),
-    path('forumAdd/', forumAdd, name='forumAdd'),
-    path('discussionAdd/', discussionAdd, name='discussionAdd')
+
 ]
